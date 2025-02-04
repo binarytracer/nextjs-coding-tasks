@@ -17,20 +17,23 @@
     color: #FBC303;
 }
 
-.cta {
-    margin-top: 50px;
-    font-size: larger;
+.streakList {
+    margin-top: 10px;
+    list-style: none;
 }
 
-.cta a {
+.streakList li {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    line-height: 140%;
+}
+
+.streakList li a {
     font-weight: bold;
     color: #4B27DC;
 }
 
-.cta a:hover {
+.streakList li a:hover {
     color: #200980;
-}
-
-ul.streakList {
-    list-style: none;
 }

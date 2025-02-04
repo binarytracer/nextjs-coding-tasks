@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.center {
+    margin: auto;
+}
+
+.center>* {
+    text-align: center;
+}
+
+.streakContainer {
+    width: 424px;
+    border: 2px solid #E6E6E6;
+    margin-top: 20px;
+    height: 112px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.streakContainer>div {
+    height: 62px;
+    flex: 1;
+    /* padding-top: 4px; */
+    border-bottom: 2px solid #E6E6E6;
+    font-size: 12px;
+    font-weight: 500;
+    color: #A2A2A2;
+    line-height: 18px;
+}
+
+.capitalize {
+    text-transform: uppercase;
+}
+
+.streakContainer img {
+    display: block;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+.streakContainer>.activeDay {
+    border-bottom-color: #6442EF;
+    color: #6442EF;
+}

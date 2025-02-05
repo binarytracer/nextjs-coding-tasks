@@ -44,8 +44,6 @@ export default async function StreakPage({ params }: StreakPageProps) {
     (dayActivity: DayActivityWithDay) => dayActivity.date <= todayDate
   ).length;
 
-  console.table(streakDayCount);
-
   return (
     <div className="container">
       <main>

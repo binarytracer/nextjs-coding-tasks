@@ -97,6 +97,12 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 
 
 
-##### Diagram
+## Diagrams
 
-![alt text](image-1.png)
+
+#### Registration
+![alt text](image-2.png)
+
+
+#### Notification
+![alt text](image-3.png)

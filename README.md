@@ -26,3 +26,5 @@ bun dev
 Third, on second step:
 
 > you can see the rendering url as this
+
+![image](https://github.com/user-attachments/assets/5cace4f1-937e-4a92-9cf9-8a23ed8deb10)

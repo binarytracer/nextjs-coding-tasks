@@ -1,45 +1,73 @@
-"use client";
-import { useParams } from "next/navigation";
 import classes from "./page.module.css";
 import Image from "next/image";
 import checkMarkedImg from "../../../../public/check-marked.svg";
 import activeDayImg from "../../../../public/activeDay.svg";
+import { notFound } from "next/navigation";
+import { format } from "date-fns";
+import { DayActivity } from "../../api/streaks/streak_data";
+import Link from "next/link";
 
-interface DaySummary {
-  name: string;
-  active: boolean;
+interface DayActivityWithDay extends DayActivity {
+  dayName: string;
+  isToday: boolean;
 }
 
-const days: DaySummary[] = [
-  { name: "Sun", active: false },
-  { name: "Mon", active: false },
-  { name: "Tue", active: false },
-  { name: "Thu", active: false },
-  { name: "Fri", active: false },
-  { name: "Sat", active: true },
-];
+interface StreakPageProps {
+  params: Promise<{
+    case: string;
+  }>;
+}
 
-export default function StreakPage() {
-  const params = useParams();
+export default async function StreakPage({ params }: StreakPageProps) {
+  const streakId = (await params).case;
+
+  const data = await fetch(`${process.env.NEXT_API_URL}/streaks/${streakId}`);
+
+  if (!data.ok) {
+    notFound();
+  }
+
+  const streakData = await data.json();
+  const todayDate = format(new Date(), "yyyy-MM-dd");
+
+  const weekDays: DayActivityWithDay[] = streakData.days
+    .map((dayActivity: DayActivity) => {
+      return {
+        ...dayActivity,
+        isToday: dayActivity.date === todayDate,
+        dayName: format(new Date(dayActivity.date), "EEE"),
+      };
+    })
+    .reverse();
+
+  const streakDayCount = weekDays.filter(
+    (dayActivity: DayActivityWithDay) => dayActivity.date <= todayDate
+  ).length;
 
   return (
-    <div className={classes.container}>
-      <main className={classes.center}>
-        <h2>Your streak in 6 days </h2>
+    <div className="container">
+      <main>
+        <h2>
+          Case: {streakId}, Your streak in {streakDayCount} days
+        </h2>
 
         <div className={classes.streakContainer}>
-          {days.map((day) => (
+          {weekDays.map((day) => (
             <div
-              className={day.active ? classes.activeDay : undefined}
-              key={day.name}
+              className={day.isToday ? classes.activeDay : undefined}
+              key={day.dayName}
             >
               <Image
-                src={day.active ? activeDayImg : checkMarkedImg}
+                src={day.isToday ? activeDayImg : checkMarkedImg}
                 alt="done"
               />
-              <label className={classes.capitalize}>{day.name}</label>
+              <label className={classes.capitalize}>{day.dayName}</label>
             </div>
           ))}
+        </div>
+
+        <div className="cta">
+          <Link href="/home">To Streak List</Link>
         </div>
       </main>
     </div>

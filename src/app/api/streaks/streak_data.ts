@@ -8,10 +8,13 @@ enum StateEnum {
   COMPLETED = "COMPLETED",
 }
 
-interface DayActivity {
+export interface DayActivity {
   date: string;
   activities: number;
   state: StateEnum;
+}
+export interface DayActivityWithDay extends DayActivity {
+  dayName: string;
 }
 
 interface Streak {

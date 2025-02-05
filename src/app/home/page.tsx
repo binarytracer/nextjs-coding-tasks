@@ -1,19 +1,20 @@
 import classes from "./page.module.css";
 import Link from "next/link";
 
-const availableStreaks = [3, 2, 1];
+export default async function HomePage() {
+  const data = await fetch(`${process.env.NEXT_API_URL}/streaks`);
+  const streakIds = await data.json();
 
-export default function HomePage() {
   return (
-    <div className={classes.container}>
-      <main className={classes.center}>
-        <h2>Streak List</h2>
+    <div className="container">
+      <main>
+        <h1>Streaks</h1>
 
         <ul className={classes.streakList}>
-          {availableStreaks.map((streak) => (
-            <li key={streak}>
-              <Link href={`home/${streak}`} title={`Streak ${streak}`}>
-                Streak {streak}
+          {streakIds.map((streakId: number) => (
+            <li key={streakId}>
+              <Link href={`home/${streakId}`} title={`View Streak ${streakId}`}>
+                Streak {streakId}
               </Link>
             </li>
           ))}

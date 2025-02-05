@@ -1,5 +1,6 @@
 import streaks from "./streak_data";
 
 export async function GET() {
-  return Response.json(streaks);
+  const streakIds = streaks.map((streak) => streak.id);
+  return Response.json(streakIds);
 }

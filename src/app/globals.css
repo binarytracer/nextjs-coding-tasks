@@ -46,3 +46,42 @@ a {
         color-scheme: dark;
     }
 }
+
+header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 56px;
+}
+
+header>* {
+    margin: auto;
+}
+
+header img.logo {
+    width: 77px;
+    height: 24px;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+main {
+    margin: auto;
+}
+
+.cta {
+    margin-top: 50px;
+    font-size: larger;
+}
+
+.cta a {
+    font-weight: bold;
+    color: #4B27DC;
+}
+
+.cta a:hover {
+    color: #200980;
+}

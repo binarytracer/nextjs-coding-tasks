@@ -31,19 +31,19 @@ bun dev
 
 ## Technical Specification: Streak Reminder Push Notification System
 
-#### Assumptions:
+### Assumptions:
 
 All devices have registered and with respective device tokens, with **Firestore**
 All users are authenticated with **Firebase Authentication**.
 A users able perform CRUD operations on cases, streaks with **Firestore**
 
-#### Requirements:
+### Requirements:
 
 - Track user activity to determine the last time they were active.
 - Trigger a push notification 24 hours based from last activity.
 - The system should scale to handle a large number of users.
 
-#### Sample Records
+### Sample Records
 
 > sample data for various collection.
 
@@ -51,9 +51,9 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 
 ```json
 {
-  "userId":"1",
-  “deviceId”: 1,
-  "deviceToken":"123345"
+  "userId": "1",
+  "deviceId": 1,
+  "deviceToken": "123345"
 }
 ```
 
@@ -84,16 +84,19 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 
 > note: Can be derived from existing collections
 
-
-#### Notification Flow
+## Notification Flow
 
 1. **Cloud Scheduler** will run once every 24hrs and interval manner, that will trigger a **Cloud Function**.
 2. **Cloud Function** will perform the following:
-    1. Query all users from the Firestore ( users collection ) to have no activity in the last 24hrs.
-    2. All matching users, will be queried against the device collection to get its designated device tokens. These tokens represent the destination where to send notification messages to users.
-    3. Send messages to the **Firebase Cloud Messaging**.
 
-3. **FireCloud Messaging** will handle message sending to designated devices using ***device token***.
+   1. Query all users from the Firestore ( users collection ) to have no activity in the last 24hrs.
+   2. All matching users, will be queried against the device collection to get its designated device tokens. These tokens represent the destination where to send notification messages to users.
+   3. Send messages to the **Firebase Cloud Messaging**.
+
+3. **FireCloud Messaging** will handle message sending to designated devices using **_device token_**.
+
+
 
 ##### Diagram
+
 ![alt text](image-1.png)

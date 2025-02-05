@@ -47,7 +47,7 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 
 > sample data for various collection.
 
-##### Device Record
+##### Device Collection / Record
 
 ```json
 {
@@ -57,7 +57,7 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 }
 ```
 
-##### User Record
+##### User Collection Record
 
 ```json
 {
@@ -66,17 +66,6 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
   "firstName": "first name",
   "lastName": "last name",
   "lastActivity": "2025-02-05T09:10:57.217Z"
-}
-```
-
-##### Day Activity Record
-
-```json
-{
-  "userId": "1",
-  "date": "2025-02-05",
-  "activities": 10,
-  "state": "INCOMPLETE"
 }
 ```
 
@@ -95,14 +84,12 @@ A users able perform CRUD operations on cases, streaks with **Firestore**
 
 3. **FireCloud Messaging** will handle message sending to designated devices using **_device token_**.
 
-
-
 ## Diagrams
 
-
 #### Registration
+
 ![alt text](image-2.png)
 
-
 #### Notification
+
 ![alt text](image-3.png)

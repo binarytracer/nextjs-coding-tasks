@@ -3,14 +3,14 @@ import classes from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={classes.container}>
-      <main className={classes.center}>
+    <div className="container">
+      <main>
         <h1>
           Hi, Welcome to{" "}
           <span className={classes.emphasis}>Streaks Monitoring App</span>.
         </h1>
 
-        <div className={classes.cta}>
+        <div className="cta">
           <Link href="/home" title="Home">
             Home
           </Link>

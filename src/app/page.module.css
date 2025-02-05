@@ -1,14 +1,3 @@
-.container {
-    display: flex;
-    height: 100vh;
-    /* Full viewport height */
-}
-
-.center {
-    margin: auto;
-    /* Centers both horizontally and vertically */
-}
-
 .title {
     margin-bottom: 100px;
 }
